@@ -1,3 +1,6 @@
 #--------------------------#
 #   Ignore These Files     #
 #--------------------------#
+
+#Ignore all sounds
+sounds/*
