@@ -1,6 +1,7 @@
 #--------------------------#
 #   Ignore These Files     #
 #--------------------------#
-
+#Ignore .DS Store Files Created on MacOS
+.DS_Store
 #Ignore all sounds
 sounds/*
