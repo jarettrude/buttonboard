@@ -1,0 +1,6 @@
+Based on works by Butix, Lucasbosch and Cmykey
+
+Licensed under CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)].
+
+Original design found here:
+https://upload.wikimedia.org/wikipedia/commons/a/a3/Raspberry_Pi_3_illustration.svg
