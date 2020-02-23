@@ -22,7 +22,9 @@ git checkout python3
 
 Using the default install script wreaked havoc on my pi due to overwriting symbolic links for Python3\. Your mileage may vary. They acknowledge this in their install script:
 
-> Note that this may (intentionally) clobber Python 3 symlinks in newer OS's I would rather manually call python3 and define python3 environment.
+> Note that this may (intentionally) clobber Python 3 symlinks in newer OS's
+
+I would rather manually call python3 and define python3 environment.
 
 Manual Override for Python3 (use in lightshowpi directory)
 
