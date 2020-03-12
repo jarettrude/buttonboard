@@ -30,10 +30,14 @@ Manual Override for Python3 (use in lightshowpi directory)
 
 - First line copies a modified install script that comments out the symlink modifications.
 - Second line updates all files that define the environment from python to python3.
+- Third line copies a custom config file for ligthshowpi to config directory.
+- Fourth line copies a modified synchronized_lights.py file to lightshowpi's py directory.
 
   ```
-  cp ../install.sh install.sh
+  cp ../lightshowpiMods/install.sh install.sh
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python3|g' $(git ls-files)
+  cp ../lightshowpiMods/overrides.cfg ./config/overrides.cfg
+  cp ../lightshowpiMods/synchronized_lights.py ./py/synchronized_lights.py
   ```
 
 Lightshowpi requires setting a defined environment for their program to operate correctly. They recommend doing this through the root user's crontab.
@@ -46,4 +50,10 @@ Add the line below to the root user's crontab.
 
 ```
 SYNCHRONIZED_LIGHTS_HOME=/home/pi/buttonboard/lightshowpi
+```
+
+While you're there, we need our project to start at system startup by adding the line below the crontab.
+
+```
+@reboot python3 /home/pi/buttonboard/buttonboard.py &
 ```
