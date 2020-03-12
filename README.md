@@ -1,6 +1,6 @@
 # buttonboard
 
-An interactive sound board that integrates lightshowpi to make LED dance to music.
+An interactive sound board that integrates lightshowpi to make LEDs dance to music.
 
 ## Install Instructions
 
@@ -30,15 +30,27 @@ Manual Override for Python3 (use in lightshowpi directory)
 
 - First line copies a modified install script that comments out the symlink modifications.
 - Second line updates all files that define the environment from python to python3.
-- Third line copies a custom config file for ligthshowpi to config directory.
-- Fourth line copies a modified synchronized_lights.py file to lightshowpi's py directory.
 
   ```
   cp ../lightshowpiMods/install.sh install.sh
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python3|g' $(git ls-files)
-  cp ../lightshowpiMods/overrides.cfg ./config/overrides.cfg
-  cp ../lightshowpiMods/synchronized_lights.py ./py/synchronized_lights.py
   ```
+
+Second set of modifications are to the config file that defines gpio pins and settings.
+
+This line copies proper config file to ligthshowpi directory.
+
+```
+  cp ../lightshowpiMods/overrides.cfg ./config/overrides.cfg
+```
+
+Third customization is the python script that synchronizes the lights to sound. The default behavior is to turn off all gpio pins after a song plays. This locks us out from controlling the LEDs between button presses and songs.
+
+The line below copies a modified synchronized_lights file to the lightshowpi directory.
+
+```
+  cp ../lightshowpiMods/synchronized_lights.py ./py/synchronized_lights.py
+```
 
 Lightshowpi requires setting a defined environment for their program to operate correctly. They recommend doing this through the root user's crontab.
 
