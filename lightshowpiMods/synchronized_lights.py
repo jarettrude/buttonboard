@@ -21,15 +21,15 @@ The timing of the lights turning on and off is based upon the frequency
 response of the music being played.  A short segment of the music is
 analyzed via FFT to get the frequency response across each defined
 channel in the audio range.  Each light channel is then faded in and
-out based upon the amplitude of the frequency response in the 
-corresponding audio channel.  Fading is accomplished with a software 
+out based upon the amplitude of the frequency response in the
+corresponding audio channel.  Fading is accomplished with a software
 PWM output.  Each channel can also be configured to simply turn on and
-off as the frequency response in the corresponding channel crosses a 
+off as the frequency response in the corresponding channel crosses a
 threshold.
 
 FFT calculation can be CPU intensive and in some cases can adversely
 affect playback of songs (especially if attempting to decode the song
-as well, as is the case for an mp3).  For this reason, the FFT 
+as well, as is the case for an mp3).  For this reason, the FFT
 calculations are cached after the first time a new song is played.
 The values are cached in a gzipped text file in the same location as the
 song itself.  Subsequent requests to play the same song will use the
@@ -38,7 +38,7 @@ utilization dramatically and allowing for clear music playback of all
 audio file types.
 
 Recent optimizations have improved this dramatically and most users are
-no longer reporting adverse playback of songs even on the first 
+no longer reporting adverse playback of songs even on the first
 playback.
 
 Sample usage:
@@ -50,10 +50,10 @@ sudo python synchronized_lights.py --file=/home/pi/music/jingle_bells.mp3
 
 Third party dependencies:
 
-alsaaudio: for audio input/output 
+alsaaudio: for audio input/output
     http://pyalsaaudio.sourceforge.net/
 
-decoder.py: decoding mp3, ogg, wma, ... 
+decoder.py: decoding mp3, ogg, wma, ...
     https://pypi.python.org/pypi/decoder.py/1.5XB
 
 numpy: for FFT calculation
@@ -186,7 +186,7 @@ class Lightshow(object):
                 os.remove(cm.lightshow.fifo)
             os.mkfifo(cm.lightshow.fifo, 0o777)
 
-        self.chunk_size = cm.audio_processing.chunk_size  # Use a multiple of 8 
+        self.chunk_size = cm.audio_processing.chunk_size  # Use a multiple of 8
 
         atexit.register(self.exit_function)
 
@@ -206,6 +206,8 @@ class Lightshow(object):
             time.sleep(1)
             self.network.unset_playing()
 
+        # Change clean_up to initialize so that gpio pins are not reset at exit_function.
+        # hc.clean_up()
         hc.initialize()
 
         if cm.fm.enabled:
@@ -459,7 +461,7 @@ class Lightshow(object):
         if self.server:
             self.network.set_playing()
 
-        songcount = 0 
+        songcount = 0
 
         # Listen on the audio input device until CTRL-C is pressed
         while True:
