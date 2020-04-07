@@ -10,12 +10,22 @@ from signal import pause
 from subprocess import Popen, check_call
 import glob
 
+# SHUTDOWN BUTTON
+def shutdown():
+    check_call(['sudo', 'poweroff'])
+shutdown_btn = Button(21, hold_time=2)
+shutdown_btn.when_held = shutdown
+
 # DEFINE LEDS
 allLEDS = LEDBoard(27, 22, 23, 24, 9, 25, 11, 8, 5, 12)
-whiteLEDS = leds.value = (1,0,0,0,0,0,0,0,0,1)
-greenLEDS = leds.value = (0,1,1,0,0,0,0,0,0,0)
-blueLEDS = leds.value = (0,0,0,1,1,1,0,0,0,0)
-purpleLEDS = leds.value = (0,0,0,0,0,0,1,1,1,0)
+def whiteLEDS():
+    allLEDS.value = (1,0,0,0,0,0,0,0,0,1)
+def greenLEDS():
+    allLEDS.value = (0,1,1,0,0,0,0,0,0,0)
+def blueLEDS():
+    allLEDS.value = (0,0,0,1,1,1,0,0,0,0)
+def purpleLEDS():
+    allLEDS.value = (0,0,0,0,0,0,1,1,1,0)
 greenButtonLED = LED(7)
 
 # DEFINE BUTTONS
@@ -31,201 +41,192 @@ rightKnobButton = Button(16)
 rightKnobButtonClk = Button(13)
 rightKnobButtonCntClk = Button(6)
 
-# SOUNDS
-sdir = ('/home/pi/buttonboard/sounds/')
-sounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-snum = len(glob.glob1(sdir,'*.mp3'))
-smax = snum + 1
-for s_count in sounds:
-    print(s_count)
-print(snum)
-s_count = 0
-def play():
-    Popen([
-        'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        sounds[s_count]
-    ]).wait()
-
 # RED SOUNDS
-redsdir = ('/home/pi/buttonboard/sounds/')
-redsounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-redsnum = len(glob.glob1(sdir,'*.mp3'))
-redsmax = snum + 1
-for reds_count in redsounds:
-    print(reds_count)
-print(redsnum)
-reds_count = 0
+reddir = ('/home/pi/buttonboard/sounds/red/')
+redsound = glob.glob("/home/pi/buttonboard/sounds/red/*.mp3")
+rednum = len(glob.glob1(reddir,'*.mp3'))
+redmax = rednum + 1
+for red_count in redsound:
+    print(red_count)
+print(rednum)
+red_count = 0
 def redplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        redsounds[reds_count]
+        redsound[red_count]
     ]).wait()
-
+    
 # BLUE SOUNDS
-bluesdir = ('/home/pi/buttonboard/sounds/')
-bluesounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-bluesnum = len(glob.glob1(sdir,'*.mp3'))
-bluesmax = snum + 1
-for blues_count in bluesounds:
-    print(blues_count)
-print(bluesnum)
-blues_count = 0
+bluedir = ('/home/pi/buttonboard/sounds/blue/')
+bluesound = glob.glob("/home/pi/buttonboard/sounds/blue/*.mp3")
+bluenum = len(glob.glob1(bluedir,'*.mp3'))
+bluemax = bluenum + 1
+for blue_count in bluesound:
+    print(blue_count)
+print(bluenum)
+blue_count = 0
 def blueplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        bluesounds[blues_count]
+        bluesound[blue_count]
     ]).wait()
 
 # YELLOW SOUNDS
-yellowsdir = ('/home/pi/buttonboard/sounds/')
-yellowsounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-yellowsnum = len(glob.glob1(sdir,'*.mp3'))
-yellowsmax = snum + 1
-for yellows_count in yellowsounds:
-    print(yellows_count)
-print(yellowsnum)
-yellows_count = 0
+yellowdir = ('/home/pi/buttonboard/sounds/yellow/')
+yellowsound = glob.glob("/home/pi/buttonboard/sounds/yellow/*.mp3")
+yellownum = len(glob.glob1(yellowdir,'*.mp3'))
+yellowmax = yellownum + 1
+for yellow_count in yellowsound:
+    print(yellow_count)
+print(yellownum)
+yellow_count = 0
 def yellowplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        yellowsounds[yellows_count]
+        yellowsound[yellow_count]
     ]).wait()
 
 # BLACK SOUNDS
-blacksdir = ('/home/pi/buttonboard/sounds/')
-blacksounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-blacksnum = len(glob.glob1(sdir,'*.mp3'))
-blacksmax = snum + 1
-for blacks_count in blacksounds:
-    print(blacks_count)
-print(blacksnum)
-blacks_count = 0
+blackdir = ('/home/pi/buttonboard/sounds/black/')
+blacksound = glob.glob("/home/pi/buttonboard/sounds/black/*.mp3")
+blacknum = len(glob.glob1(blackdir,'*.mp3'))
+blackmax = blacknum + 1
+for black_count in blacksound:
+    print(black_count)
+print(blacknum)
+black_count = 0
 def blackplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        blacksounds[blacks_count]
+        blacksound[black_count]
     ]).wait()
 
 # GREEN SOUNDS
-greensdir = ('/home/pi/buttonboard/sounds/')
-greensounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-greensnum = len(glob.glob1(sdir,'*.mp3'))
-greensmax = snum + 1
-for greens_count in greensounds:
-    print(greens_count)
-print(greensnum)
-greens_count = 0
+greendir = ('/home/pi/buttonboard/sounds/green/')
+greensound = glob.glob("/home/pi/buttonboard/sounds/green/*.mp3")
+greennum = len(glob.glob1(greendir,'*.mp3'))
+greenmax = greennum + 1
+for green_count in greensound:
+    print(green_count)
+print(greennum)
+green_count = 0
 def greenplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        greensounds[greens_count]
+        greensound[green_count]
     ]).wait()
 
-# LEFT SOUNDS
-leftsdir = ('/home/pi/buttonboard/sounds/')
-leftsounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-leftsnum = len(glob.glob1(sdir,'*.mp3'))
-leftsmax = snum + 1
-for lefts_count in leftsounds:
-    print(lefts_count)
-print(leftsnum)
-lefts_count = 0
-def leftplay():
+# LEFT KNOB SOUNDS
+leftknobdir = ('/home/pi/buttonboard/sounds/leftknob/')
+leftknobsound = glob.glob("/home/pi/buttonboard/sounds/leftknob/*.mp3")
+leftknobnum = len(glob.glob1(leftknobdir,'*.mp3'))
+leftknobmax = leftknobnum + 1
+for leftknob_count in leftknobsound:
+    print(leftknob_count)
+print(leftknobnum)
+leftknob_count = 0
+def leftknobplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        leftsounds[lefts_count]
+        leftknobsound[leftknob_count]
     ]).wait()
 
-# RIGHT SOUNDS
-rightsdir = ('/home/pi/buttonboard/sounds/')
-rightsounds = glob.glob("/home/pi/buttonboard/sounds/*.mp3")
-rightsnum = len(glob.glob1(sdir,'*.mp3'))
-rightsmax = snum + 1
-for rights_count in rightsounds:
-    print(rights_count)
-print(rightsnum)
-rights_count = 0
-def rightplay():
+# RIGHT KNOB SOUNDS
+rightknobdir = ('/home/pi/buttonboard/sounds/rightknob/')
+rightknobsound = glob.glob("/home/pi/buttonboard/sounds/rightknob/*.mp3")
+rightknobnum = len(glob.glob1(rightknobdir,'*.mp3'))
+rightknobmax = rightknobnum + 1
+for rightknob_count in rightknobsound:
+    print(rightknob_count)
+print(rightknobnum)
+rightknob_count = 0
+def rightknobplay():
     Popen([
         'bash', '/home/pi/buttonboard/lightshowpiMods/play',
-        rightsounds[rights_count]
+        rightknobsound[rightknob_count]
     ]).wait()
-
 
 # LIGHTS CAMERA ACTION
 while True:
+    allLEDS.off()
     if redButton.is_pressed:
         allLEDS.on()
-        redplay
-        reds_count +=1
-        if reds_count >= redsnum:
-            reds_count = 0
+        redplay()
+        red_count +=1
+        print(red_count)
+        if red_count >= rednum:
+            red_count = 0
     if blueButton.is_pressed:
         allLEDS.on()
-        blueplay
-        blues_count +=1
-        if blues_count >= bluesnum:
-            blues_count = 0
+        blueplay()
+        blue_count +=1
+        print(blue_count)
+        if blue_count >= bluenum:
+            blue_count = 0
     if yellowButton.is_pressed:
         allLEDS.on()
-        yellowplay
-        yellows_count +=1
-        if yellows_count >= yellowsnum:
-            yellows_count = 0
+        yellowplay()
+        yellow_count +=1
+        print(yellow_count)
+        if yellow_count >= yellownum:
+            yellow_count = 0
     if blackButton.is_pressed:
         allLEDS.on()
-        blackplay
-        blacks_count +=1
-        if blacks_count >= blacksnum:
-            blacks_count = 0
+        blackplay()
+        black_count +=1
+        print(black_count)
+        if black_count >= blacknum:
+            black_count = 0
     if greenButton.is_pressed:
         allLEDS.on()
-        greenplay
-        greens_count +=1
-        if greens_count >= greensnum:
-            greens_count = 0
+        greenButtonLED.on()
+        greenplay()
+        greenButtonLED.off()
+        green_count +=1
+        print(green_count)
+        if green_count >= greennum:
+            green_count = 0
     if leftKnobButton.is_pressed:
         allLEDS.on()
-        leftplay
-        lefts_count +=1
-        if lefts_count >= leftsnum:
-            lefts_count = 0
+        leftknobplay()
+        leftknob_count +=1
+        print(leftknob_count)
+        if leftknob_count >= leftknobnum:
+            leftknob_count = 0
     if leftKnobButtonClk.is_pressed:
         allLEDS.on()
-        leftplay
-        lefts_count +=1
-        if lefts_count >= leftsnum:
-            lefts_count = 0
+        leftknobplay()
+        leftknob_count +=1
+        print(leftknob_count)
+        if leftknob_count >= leftknobnum:
+            leftknob_count = 0
     if leftKnobButtonCntClk.is_pressed:
         allLEDS.on()
-        leftplay
-        lefts_count +=1
-        if lefts_count >= leftsnum:
-            lefts_count = 0
+        leftknobplay()
+        leftknob_count +=1
+        print(leftknob_count)
+        if leftknob_count >= leftknobnum:
+            leftknob_count = 0
     if rightKnobButton.is_pressed:
-            allLEDS.on()
-            rightplay
-            rights_count +=1
-            if rights_count >= rightsnum:
-                rights_count = 0
+        allLEDS.on()
+        rightknobplay()
+        rightknob_count +=1
+        print(rightknob_count)
+        if rightknob_count >= rightknobnum:
+            rightknob_count = 0
     if rightKnobButtonClk.is_pressed:
-            allLEDS.on()
-            rightplay
-            rights_count +=1
-            if rights_count >= rightsnum:
-                rights_count = 0
+        allLEDS.on()
+        rightknobplay()
+        rightknob_count +=1
+        print(rightknob_count)
+        if rightknob_count >= rightknobnum:
+            rightknob_count = 0
     if rightKnobButtonCntClk.is_pressed:
-            allLEDS.on()
-            rightplay
-            rights_count +=1
-            if rights_count >= rightsnum:
-                rights_count = 0
-
-
-# SHUTDOWN BUTTON
-def shutdown():
-    check_call(['sudo', 'poweroff'])
-shutdown_btn = Button(21, hold_time=2)
-shutdown_btn.when_held = shutdown
+        allLEDS.on()
+        rightknobplay()
+        rightknob_count +=1
+        print(rightknob_count)
+        if rightknob_count >= rightknobnum:
+            rightknob_count = 0
 
 pause()
