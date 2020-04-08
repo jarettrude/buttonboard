@@ -53,6 +53,13 @@ The line below copies a modified synchronized_lights file to the lightshowpi dir
 ```
   cp ../lightshowpiMods/synchronized_lights.py ./py/synchronized_lights.py
 ```
+## Run the Install Script
+
+While in the lightshowpi directory run the following to install all the dependencies needed to make the program work.
+```
+sudo ./install.sh
+```
+## Final Housekeeping
 
 Lightshowpi requires setting a defined environment for their program to operate correctly. They recommend doing this through the root user's crontab.
 
@@ -71,3 +78,8 @@ While you're there, we need our project to start at system startup by adding the
 ```
 @reboot python3 /home/pi/buttonboard/buttonboard.py &
 ```
+## Reboot System
+
+Give the system a reboot and test all the buttons function as desired.
+
+Enjoy!
