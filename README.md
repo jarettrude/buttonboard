@@ -1,6 +1,6 @@
 # buttonboard
 
-![ButtonBoard](/images/IMG_4692.jpeg)
+![ButtonBoard](/images/Button Board on Wall.jpeg)
 
 An interactive sound board that integrates lightshowpi to make LEDs dance to music.
 
