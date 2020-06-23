@@ -61,10 +61,6 @@ sudo ./install.sh
 ```
 ## Add Sound Files
 Add your desired sound effects or music to their respective folders within the sounds directory. The folders are currently named in relation to the physical color of the buttons I used for this project. If you want to change them be sure to update their names in the buttonboard.py file.
-
-While in the lightshowpi directory run the following to install all the dependencies needed to make the program work.
-```
-sudo ./install.sh
 ```
 ## Final Housekeeping
 
